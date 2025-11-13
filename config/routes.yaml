@@ -8,12 +8,22 @@ setupcheck:
     path: /api/setup-check
     controller: App\Controller\DefaultController::setupCheck
 
+api_rates:
+    path: /api/rates
+    controller: App\Controller\RatesController::daily
+    methods: [GET]
+
+api_rates_history:
+    path: /api/rates/{code}/history
+    controller: App\Controller\RatesController::history
+    methods: [GET]
+  
 index:
     path: /{wildcard}
     defaults: {
         _controller: App\Controller\DefaultController::index
     }
     requirements:
-        wildcard: .*
+        wildcard: ^(?!api).*
     # controller: App\Controller\DefaultController::index
 

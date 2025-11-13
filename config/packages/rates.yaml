@@ -1,0 +1,19 @@
+parameters:
+  app.currencies: ['EUR', 'USD', 'CZK', 'IDR', 'BRL']
+
+  app.currency_names:
+    EUR: 'euro'
+    USD: 'dolar amerykański'
+    CZK: 'korona czeska'
+    IDR: 'rupia indonezyjska'
+    BRL: 'real brazylijski'
+  
+  app.spreads:
+    eur_usd:
+      members: ['EUR', 'USD']
+      buy_delta: -0.15
+      sell_delta: 0.11
+    other:
+      members: ['CZK', 'IDR', 'BRL']
+      buy_delta: null
+      sell_delta: 0.20

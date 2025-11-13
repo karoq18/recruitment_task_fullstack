@@ -28,3 +28,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\NbpClient:
+        arguments:
+            $cacheDir: '%kernel.cache_dir%'
+
+    App\Service\RatesService:
+        arguments:
+            $currencies: '%app.currencies%'
+            $names: '%app.currency_names%'
+            $spreads: '%app.spreads%'
