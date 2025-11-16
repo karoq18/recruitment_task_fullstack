@@ -334,6 +334,11 @@ html[data-theme="light"] .tm-card-rate {
     background: rgba(255, 255, 255, 0.95);
 }
 
+.tm-chip-wrapper {
+    width: 100%;
+    margin: auto;
+}
+
 .tm-card-rate-label {
     font-size: 0.75rem;
     text-transform: uppercase;
