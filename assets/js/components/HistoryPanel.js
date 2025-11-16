@@ -3,8 +3,11 @@ import Sparkline from "./Sparkline";
 import { fetchHistory } from "../api";
 
 export default function HistoryPanel({ code, date, onChangeDate }) {
+
   const [data, setData] = useState(null);
   const [err, setErr] = useState(null);
+
+  const todayIso = new Date().toISOString().slice(0, 10);
 
   useEffect(() => {
     let alive = true;
@@ -80,10 +83,10 @@ export default function HistoryPanel({ code, date, onChangeDate }) {
         </div>
         <div className="tm-history-sub small">
           Historia sprzedaży z ostatnich{" "}
-          <strong>14 dni</strong>
-          do{" "}<strong>{fmtDate(baseDate)}</strong>
-          </div>
+          <strong>14 dni </strong>
+          do {" "}<strong>{fmtDate(baseDate)}</strong>
         </div>
+      </div>
 
       <div className="">
         <div className="">
@@ -91,15 +94,16 @@ export default function HistoryPanel({ code, date, onChangeDate }) {
             Data kursu NBP
           </div>
           <div>
-          <input
-            id="history-date"
-            type="date"
-            className="form-control form-control-sm tm-date-input"
-            value={date}
-            onChange={e =>
-              onChangeDate && onChangeDate(e.target.value)
-            }
-          />
+            <input
+              id="history-date"
+              type="date"
+              className="form-control form-control-sm tm-date-input"
+              value={date}
+               max={todayIso}
+              onChange={e =>
+                onChangeDate && onChangeDate(e.target.value)
+              }
+            />
           </div>
         </div>
       </div>
@@ -186,7 +190,7 @@ export default function HistoryPanel({ code, date, onChangeDate }) {
           <div className="tm-card-rate">
             <div className="tm-stat-label small">Max. cena sprzedaży</div>
             <div>
-             <strong>{maxSell != null ? maxSell.toFixed(4) : "—"} PLN</strong>
+              <strong>{maxSell != null ? maxSell.toFixed(4) : "—"} PLN</strong>
             </div>
           </div>
         </div>
